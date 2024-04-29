@@ -33,3 +33,8 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+.env
+
+# hardcoded data stored from sample api calls only used for development
+src/data/hard.js
