@@ -55,7 +55,7 @@ function DefaultScreen() {
 
 function StackNav() {
 	return (
-		<Stack.Navigator>
+		<Stack.Navigator screenOptions={{ headerShown: false }}>
 			<Tab.Screen name="Stack Home" component={MainScreen} options={{ tabBarIcon: () => <Ionicons name="home-outline" /> }} />
 			<Stack.Screen name="Detail View" component={BookDetailScreen} />
 		</Stack.Navigator>
