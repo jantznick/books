@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
 
 import { UserContext } from '@/UserContext';
 
-export const ProfileScreen = () => {
-	const [user, setUser] = useState(UserContext);
-
+export const LoginScreen = () => {
+	const { user, setUser } = useContext(UserContext);
+	
 	return (
 		<View style={styles.container}>
-			<Text>Profile Screen</Text>
+			<Text>Login Screen</Text>
 			<Button
-				title="Logout"
-				onPress={() => {
-					setUser('')
-					console.log(Boolean(user))
-				}}
+				title={"Login"}
+				onPress={() => setUser('Nick')}
 			/>
 		</View>
 	);

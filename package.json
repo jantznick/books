@@ -23,7 +23,8 @@
     "react-native-reanimated": "~3.6.2",
     "react-native-safe-area-context": "4.8.2",
     "react-native-screens": "~3.29.0",
-    "react-native-snap-carousel": "github:meliorence/react-native-snap-carousel#7b750d46ac12ceb2e59018c7b45932af437f9620"
+    "react-native-snap-carousel": "github:meliorence/react-native-snap-carousel#7b750d46ac12ceb2e59018c7b45932af437f9620",
+    "typescript": "^5.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

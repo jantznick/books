@@ -1,18 +1,15 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { StyleSheet, View, Text, Button, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { ScrollView } from 'react-native-gesture-handler';
 
-import { NYT } from '../data/hard';
+import { NYT } from '@/data/hard';
 
-import { BookCard } from './BookCard';
-
-import { UserContext } from '../UserContext';
+import { BookCard } from '@/components/BookCard';
 
 const {width, height} = Dimensions.get('window');
 
 export const MainScreen = ({navigation}) => {
-	const { user, setUser } = useContext(UserContext);
 	const [books, setBooks] = useState([]);
 	const [booksTwo, setBooksTwo] = useState([]);
 	const [selectedBook, setSelectedBook] = useState({})
@@ -30,15 +27,10 @@ export const MainScreen = ({navigation}) => {
 	return (
 		<View style={{
 			...styles.container,
-			alignItems: user ? 'center' : 'flex-start',
-			justifyContent: user ? 'center' : 'flex-start'
+			alignItems: 'flex-start',
+			justifyContent: 'flex-start'
 		}} className='px-2'>
 			<View>
-				<Button
-					title={user ? "Login" : "Logout"}
-					onPress={() => setUser(user ? '' : 'Nick')}
-				/>
-
 				<ScrollView>
 
 					<Text className='mb-8'>NYT Best Seller List - Data Provided by New York Times</Text>

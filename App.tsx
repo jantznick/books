@@ -6,16 +6,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-import { MainScreen } from './src/components/Main';
-import { BookListScreen } from './src/components/BookList';
-import { SettingsScreen } from './src/components/Settings';
-import { RecommendScreen } from './src/components/Recommend';
-import { SearchScreen } from './src/components/Search';
-import { ProfileScreen } from './src/components/Profile';
-import { Button } from 'react-native';
-import { BookDetailScreen } from './src/components/BookDetail';
+import { MainScreen } from '@/components/Main';
+import { BookListScreen } from '@/components/BookList';
+import { SettingsScreen } from '@/components/Settings';
+import { RecommendScreen } from '@/components/Recommend';
+import { SearchScreen } from '@/components/Search';
+import { ProfileScreen } from '@/components/Profile';
+import { BookDetailScreen } from '@/components/BookDetail';
 
-import { UserContext } from './src/UserContext';
+import { UserContext } from '@/UserContext';
+import { LoginScreen } from '@/components/Login';
 
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
@@ -24,19 +24,20 @@ const Stack = createNativeStackNavigator();
 function App() {
 	const [user, setUser] = useState('');
 
-	const logout = () => {
-		console.log('logging out')
-		setUser('')
-	}
-
 	return (
 		<UserContext.Provider value={{ user, setUser }}>
 			<NavigationContainer>
-				<Drawer.Navigator screenOptions={{ headerShown: !Boolean(user)}}>
-					<Drawer.Screen name="Drawer Home" component={DefaultScreen} />
-					<Drawer.Screen name="Book List" component={BookListScreen} />
-					<Drawer.Screen name="Settings" component={SettingsScreen} />
-					<Drawer.Screen name="Profile" component={ProfileScreen} />
+				<Drawer.Navigator screenOptions={{ headerShown: true}}>
+					<Drawer.Screen name="Home" component={DefaultScreen} />
+					{!Boolean(user) ?
+						<>
+							<Drawer.Screen name="Book List" component={BookListScreen} />
+							<Drawer.Screen name="Settings" component={SettingsScreen} />
+							<Drawer.Screen name="Profile" component={ProfileScreen} />
+						</>
+						:
+						<Drawer.Screen name="Login" component={LoginScreen} />
+					}
 				</Drawer.Navigator>
 			</NavigationContainer>
 		</UserContext.Provider>
